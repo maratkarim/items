@@ -9,11 +9,15 @@
   <form th:action="@{'/item/add'}" method="post">
       <input type="text" name="name">
       <input type="text" name="price">
+      <select name="car-country-id">
+          <option th:each = "c : ${count}" th:value="${c.id}" th:text="${c.getName()}"></option>
+      </select>
       <button type="submit">add</button>
   </form>
 
+  <a th:href="@{'/country'}">country</a>
+
   <div th:each="i : ${items}">
-      <span th:text="${i.getId()}"></span>
       <span th:text="${i.getNameItem()}"></span>
       <span th:text="${i.getPrice()}"></span>
       <a th:href="@{'/item/' + ${i.getId()}}">details</a>
