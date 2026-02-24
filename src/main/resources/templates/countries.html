@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{'/country'}" method="post">
+        <input type="text" name="name">
+        <input type="text" name="code">
+        <button type="submit">add</button>
+    </form>
+
+    <div th:each="c : ${countries}">
+        <span th:text="${c.name}"></span>
+        <span th:text="${c.code}"></span>
+        <a th:href="@{'/country/' + ${c.id}}">details</a>
+        <a th:href="@{'/country/delete/' + ${c.id}}">delete</a>
+    </div>
+
+</body>
+</html>

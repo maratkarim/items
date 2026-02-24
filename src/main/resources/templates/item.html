@@ -10,6 +10,9 @@
         <input type="hidden" th:value="${item.id}">
         <input type="text" th:value="${item.getNameItem()}" name="name">
         <input type="text" th:value="${item.getPrice()}" name="price">
+        <select name="country-id">
+            <option th:each="country : ${countryyy}" th:value="${country.id}" th:text="${country.name + ' / ' + country.code}"  th:selected="${item.country != null && country.id.equals(item.country.id)}"></option>
+        </select>
         <button type="submit">update</button>
     </form>
 
