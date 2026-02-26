@@ -3,6 +3,8 @@ package kz.bitlab.dataJpa.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -24,5 +26,8 @@ public class Item {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Country country;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Category> categories;
 
 }
