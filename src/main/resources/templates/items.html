@@ -12,6 +12,9 @@
       <select name="car-country-id">
           <option th:each = "c : ${count}" th:value="${c.id}" th:text="${c.getName()}"></option>
       </select>
+      <select name="categories" multiple="multiple">
+          <option th:each = "c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+      </select>
       <button type="submit">add</button>
   </form>
 
@@ -20,6 +23,7 @@
   <div th:each="i : ${items}">
       <span th:text="${i.getNameItem()}"></span>
       <span th:text="${i.getPrice()}"></span>
+      <span th:text="${i.getCountry().code}"></span>
       <a th:href="@{'/item/' + ${i.getId()}}">details</a>
       <a th:href="@{'/item/delete/' + ${i.getId()}}">delete</a>
   </div>

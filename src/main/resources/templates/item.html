@@ -13,8 +13,32 @@
         <select name="country-id">
             <option th:each="country : ${countryyy}" th:value="${country.id}" th:text="${country.name + ' / ' + country.code}"  th:selected="${item.country != null && country.id.equals(item.country.id)}"></option>
         </select>
+
         <button type="submit">update</button>
     </form>
+
+        <h3 class="mt-5 mb-3">Available categories:</h3>
+            <div th:each="category : ${categoryy}">
+                <form th:action="@{'/item/assigncategory'}"  method="post">
+                    <button type="submit">+</button>
+                    <input type="hidden" name="category_id" th:value="${category.id}">
+                    <input type="hidden" name="item_id" th:value="${item.id}">
+                    <span th:text="${category.name}"></span>
+                </form>
+            </div>
+
+
+        <h3 class="mt-5 mb-3">Assigned categories:</h3>
+        <div class="d-flex">
+            <div class="card me-3" th:each="category : ${item.categories}">
+                <form class="d-flex px-2 py-2" method="post" th:action="@{'/item/unassigncategory'}">
+                    <button type="submit" class="btn btn-danger me-2">-</button>
+                    <input type="hidden" name="category_id" th:value="${category.id}">
+                    <input type="hidden" name="item_id" th:value="${item.id}">
+                    <span class="mt-2" th:text="${category.name}"></span>
+                </form>
+            </div>
+        </div>
 
 </body>
 </html>

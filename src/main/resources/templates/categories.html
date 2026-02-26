@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{'/category'}" method="post">
+      <input type="text" name="name">
+      <button type="submit">add</button>
+    </form>
+
+    <div th:each="c : ${categories}">
+      <span th:text="${c.name}"></span>
+      <a th:href="@{'/category/' + ${c.id}}">details</a>
+      <a th:href="@{'/category/delete/' + ${c.id}}">delete</a>
+    </div>
+
+</body>
+</html>
